@@ -52,7 +52,7 @@ class vertex_ai_pipeline:
         self.SRC = SRC
         self.BUILD = BUILD
         # Replace with the name of the image in artifact project of the common folder
-        self.Image = "us-central1-docker.pkg.dev/prj-c-bu3artifacts-5wdo/c-publish-artifacts/vertexpipeline:v2"
+        self.Image = "us-central1-docker.pkg.dev/prj-c-bu3artifacts-zfe5/c-publish-artifacts/vertexpipeline:v2"
 
         self.DATA_URL = f'{BUCKET_URI}/data'
         self.TRAINING_FILE = 'adult.data.csv'
@@ -100,13 +100,13 @@ class vertex_ai_pipeline:
             'max_nodes': 4,
             'deployment_project': self.PROD_PROJECT_ID,
             # Raplace encryption with the name of the kms key in the kms project of the prod folder
-            "encryption": 'projects/prj-p-kms-lkuy/locations/us-central1/keyRings/sample-keyring/cryptoKeys/prj-p-bu3machine-learning',
+            "encryption": 'projects/prj-p-kms-8bmg/locations/us-central1/keyRings/sample-keyring/cryptoKeys/prj-p-bu3machine-learning',
             "service_account": self.SERVICE_ACCOUNT,
             "prod_service_account": self.PROD_SERVICE_ACCOUNT
         }
 
         self.monitoring_config={
-            'email': 'my.email@myorg.com', 
+            'email': 'ccolin@clsecteam.com', 
             'name': 'census_monitoring'  
         }
 
@@ -118,7 +118,7 @@ class vertex_ai_pipeline:
             template_path=self.yaml_file_path,
             pipeline_root=self.pipelineroot,
             # Raplace encryption with the name of the kms key in the kms project of the non-prod folder
-            encryption_spec_key_name='projects/prj-n-kms-gi2r/locations/us-central1/keyRings/sample-keyring/cryptoKeys/prj-n-bu3machine-learning',
+            encryption_spec_key_name='projects/prj-n-kms-t5h1/locations/us-central1/keyRings/sample-keyring/cryptoKeys/prj-n-bu3machine-learning',
             parameter_values={
                 "create_bq_dataset_query": self.create_bq_dataset_query,
                 "bq_dataset": self.data_config['bq_dataset'],
@@ -160,10 +160,10 @@ class vertex_ai_pipeline:
 
 if __name__ == "__main__":
     pipeline = vertex_ai_pipeline(
-        PROJECT_ID="prj-n-bu3machine-learning-brk1", \ # Replace with your non-prod project Id
-        PROD_PROJECT_ID='prj-p-bu3machine-learning-skc4', \ # Replace with your prod project Id
+        PROJECT_ID="prj-n-bu3machine-learning-wh06", \
+        PROD_PROJECT_ID='prj-p-bu3machine-learning-6a01', \
         REGION="us-central1", \
-        BUCKET_URI="gs://bkt-n-ml-storage-akdv", \ # Replace with your bucket in non-prod
+        BUCKET_URI="gs://bkt-n-ml-storage-akdv", \
         DATA_PATH="data", \
         KFP_COMPONENTS_PATH="components", \
         SRC="src", \
@@ -175,12 +175,12 @@ if __name__ == "__main__":
         EVAL_TABLE_ID='census_eval_table', \
         RUNNER="DataflowRunner", \
         # Replace with the name of the subnet in your shared-restricted project in the non-prod environment
-        DATAFLOW_SUBNET="https://www.googleapis.com/compute/v1/projects/prj-n-shared-restricted-wooh/regions/us-central1/subnetworks/sb-n-shared-restricted-us-central1",
+        DATAFLOW_SUBNET="https://www.googleapis.com/compute/v1/projects/prj-d-shared-restricted-9enw/regions/us-central1/subnetworks/sb-d-shared-restricted-us-central1", \
         JOB_NAME="census-ingest", \
         # Replace with the compute default service account of your non-prod project
-        SERVICE_ACCOUNT="1053774269887-compute@developer.gserviceaccount.com", \
+        SERVICE_ACCOUNT="778955863190-compute@developer.gserviceaccount.com", \
         # Replace with the compute default service account of your prod project
-        PROD_SERVICE_ACCOUNT="941180056038-compute@developer.gserviceaccount.com"
+        PROD_SERVICE_ACCOUNT="754347676311-compute@developer.gserviceaccount.com"
     )
     
     pipeline.execute()
