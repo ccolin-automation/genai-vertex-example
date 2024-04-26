@@ -175,7 +175,7 @@ if __name__ == "__main__":
         EVAL_TABLE_ID='census_eval_table', \
         RUNNER="DataflowRunner", \
         # Replace with the name of the subnet in your shared-restricted project in the non-prod environment
-        DATAFLOW_SUBNET="https://www.googleapis.com/compute/v1/projects/prj-d-shared-restricted-9enw/regions/us-central1/subnetworks/sb-d-shared-restricted-us-central1", \
+        DATAFLOW_SUBNET="https://www.googleapis.com/compute/v1/projects/prj-n-shared-restricted-tc6o/regions/us-central1/subnetworks/sb-n-shared-restricted-us-central1", \
         JOB_NAME="census-ingest", \
         # Replace with the compute default service account of your non-prod project
         SERVICE_ACCOUNT="778955863190-compute@developer.gserviceaccount.com", \
