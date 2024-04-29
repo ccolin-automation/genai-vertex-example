@@ -31,6 +31,7 @@ class vertex_ai_pipeline:
         TRAINING_TABLE_ID:str = 'census_train_table', \
         EVAL_TABLE_ID:str = 'census_eval_table', \
         RUNNER:str = "DataflowRunner", \
+        DATAFLOW_SA: str = "INSERT-DATAFLOW-SA-HERE", \
         DATAFLOW_SUBNET:str = "https://www.googleapis.com/compute/v1/projects/prj-n-shared-restricted-wooh/regions/us-central1/subnetworks/sb-n-shared-restricted-us-central1", 
         JOB_NAME:str = "census-ingest", \
         SERVICE_ACCOUNT:str = "1053774269887-compute@developer.gserviceaccount.com", \
@@ -83,7 +84,8 @@ class vertex_ai_pipeline:
                         "python_file_path": f'{BUCKET_URI}/src/ingest_pipeline.py',
                         "temp_location": f'{BUCKET_URI}/temp_dataflow',
                         "runner": RUNNER,
-                        "subnet": DATAFLOW_SUBNET
+                        "subnet": DATAFLOW_SUBNET,
+                        "dataflow_sa": DATAFLOW_SA,
         }
         self.train_config={
                      'lr': 0.01, 
@@ -128,6 +130,7 @@ class vertex_ai_pipeline:
                 "train_data_url": self.data_config['train_data_url'],
                 "eval_data_url": self.data_config['eval_data_url'],
                 "python_file_path": self.dataflow_config['python_file_path'],
+                "dataflow_sa": self.dataflow_config['dataflow_sa'],
                 "dataflow_temp_location": self.dataflow_config['temp_location'],
                 "runner": self.dataflow_config['runner'],
                 "dataflow_subnet": self.dataflow_config['subnet'],
@@ -174,6 +177,7 @@ if __name__ == "__main__":
         TRAINING_TABLE_ID='census_train_table', \
         EVAL_TABLE_ID='census_eval_table', \
         RUNNER="DataflowRunner", \
+        DATAFLOW_SA="dataflow-sa@prj-n-bu3machine-learning-wh06.iam.gserviceaccount.com", \
         # Replace with the name of the subnet in your shared-restricted project in the non-prod environment
         DATAFLOW_SUBNET="https://www.googleapis.com/compute/v1/projects/prj-n-shared-restricted-tc6o/regions/us-central1/subnetworks/sb-n-shared-restricted-us-central1", \
         JOB_NAME="census-ingest", \
