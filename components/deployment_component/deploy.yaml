@@ -148,7 +148,7 @@ deploymentSpec:
           \        )\n        return model_deploy.resource_name\n\n    vertex_endpoint.uri\
           \ = deploy_to_endpoint(vertex_model, endpoint)\n    vertex_endpoint.metadata['resourceName']=endpoint.resource_name\n\
           \n"
-        image: us-central1-docker.pkg.dev/prj-c-bu3artifacts-5wdo/c-publish-artifacts/vertexpipeline:v2
+        image: us-central1-docker.pkg.dev/prj-c-ml-artifacts-tqlj/c-publish-artifacts/vertexpipeline:v2
 pipelineInfo:
   name: deploy-model
 root:

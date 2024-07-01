@@ -131,7 +131,7 @@ deploymentSpec:
           \            objective_configs=objective_config,\n            analysis_instance_schema_uri=f\"\
           gs://{bucket_name}/monitoring_schema.yaml\",\n            encryption_spec_key_name=encryption,\n\
           \        )\n\n"
-        image: us-central1-docker.pkg.dev/prj-c-bu3artifacts-5wdo/c-publish-artifacts/vertexpipeline:v2
+        image: us-central1-docker.pkg.dev/prj-c-ml-artifacts-tqlj/c-publish-artifacts/vertexpipeline:v2
 pipelineInfo:
   name: create-monitoring
 root:

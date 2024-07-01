@@ -133,7 +133,7 @@ deploymentSpec:
           \        dep_decision = \"true\"\n        keras_model.save(model_dir)\n\
           \    else:\n        dep_decision = \"false\"\n    return (dep_decision,)\n\
           \n"
-        image: us-central1-docker.pkg.dev/prj-c-bu3artifacts-5wdo/c-publish-artifacts/vertexpipeline:v2
+        image: us-central1-docker.pkg.dev/prj-c-ml-artifacts-tqlj/c-publish-artifacts/vertexpipeline:v2
 pipelineInfo:
   name: custom-eval-model
 root:

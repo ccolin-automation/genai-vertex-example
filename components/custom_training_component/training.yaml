@@ -148,7 +148,7 @@ deploymentSpec:
           \ model\n    keras_model.compile(loss='binary_crossentropy', metrics=['accuracy'])\n\
           \    keras_model.fit(training_ds, epochs=epochs, callbacks=[tensorboard])\n\
           \    keras_model.save(model.path)\n\n"
-        image: us-central1-docker.pkg.dev/prj-c-bu3artifacts-5wdo/c-publish-artifacts/vertexpipeline:v2
+        image: us-central1-docker.pkg.dev/prj-c-ml-artifacts-tqlj/c-publish-artifacts/vertexpipeline:v2
 pipelineInfo:
   name: custom-train-model
 root:

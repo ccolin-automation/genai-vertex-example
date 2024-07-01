@@ -15,19 +15,19 @@
 steps:
   # upload dataflow src file to bucket
   - name: 'gcr.io/cloud-builders/gsutil'
-    args: ['cp', '-r', './src', 'gs://bkt-n-ml-storage-akdv']
+    args: ['cp', '-r', './src', 'gs://bkt-n-ml-storage-wozumkrx']
 
   - name: 'gcr.io/cloud-builders/gsutil'
-    args: ['cp', '-r', './data', 'gs://bkt-n-ml-storage-akdv']
+    args: ['cp', '-r', './data', 'gs://bkt-n-ml-storage-wozumkrx']
 
   # compile pipeline
-  - name: 'us-central1-docker.pkg.dev/prj-c-bu3artifacts-5wdo/c-publish-artifacts/vertexpipeline:v2'
+  - name: 'us-central1-docker.pkg.dev/prj-c-ml-artifacts-tqlj/c-publish-artifacts/vertexpipeline:v2'
     entrypoint: 'python'
     args: ['compile_pipeline.py']
     id: 'compile_job'
 
   # run pipeline
-  - name: 'us-central1-docker.pkg.dev/prj-c-bu3artifacts-5wdo/c-publish-artifacts/vertexpipeline:v2'
+  - name: 'us-central1-docker.pkg.dev/prj-c-ml-artifacts-tqlj/c-publish-artifacts/vertexpipeline:v2'
     entrypoint: 'python'
     args: ['runpipeline.py']
     id: 'run_job'

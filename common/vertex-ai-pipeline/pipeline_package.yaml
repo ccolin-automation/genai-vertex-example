@@ -513,7 +513,7 @@ components:
                 \ metrics=['accuracy'])\n    keras_model.fit(training_ds, epochs=epochs,\
                 \ callbacks=[tensorboard])\n    keras_model.save(model.path)\n\n"
               env: []
-              image_uri: us-central1-docker.pkg.dev/prj-c-bu3artifacts-5wdo/c-publish-artifacts/vertexpipeline:v2
+              image_uri: us-central1-docker.pkg.dev/prj-c-ml-artifacts-tqlj/c-publish-artifacts/vertexpipeline:v2
             disk_spec:
               boot_disk_size_gb: 100.0
               boot_disk_type: pd-ssd
@@ -734,7 +734,7 @@ deploymentSpec:
           \        bq_project,\n        \"--subnetwork\",\n        subnet,\n     \
           \   \"--no_use_public_ips\",\n        \"--worker_zone\",\n        \"us-central1-c\"\
           ,\n    ]\n\n"
-        image: us-central1-docker.pkg.dev/prj-c-bu3artifacts-5wdo/c-publish-artifacts/vertexpipeline:v2
+        image: us-central1-docker.pkg.dev/prj-c-ml-artifacts-tqlj/c-publish-artifacts/vertexpipeline:v2
     exec-build-dataflow-args-2:
       container:
         args:
@@ -770,7 +770,7 @@ deploymentSpec:
           \        bq_project,\n        \"--subnetwork\",\n        subnet,\n     \
           \   \"--no_use_public_ips\",\n        \"--worker_zone\",\n        \"us-central1-c\"\
           ,\n    ]\n\n"
-        image: us-central1-docker.pkg.dev/prj-c-bu3artifacts-5wdo/c-publish-artifacts/vertexpipeline:v2
+        image: us-central1-docker.pkg.dev/prj-c-ml-artifacts-tqlj/c-publish-artifacts/vertexpipeline:v2
     exec-create-monitoring:
       container:
         args:
@@ -850,7 +850,7 @@ deploymentSpec:
           \            objective_configs=objective_config,\n            analysis_instance_schema_uri=f\"\
           gs://{bucket_name}/monitoring_schema.yaml\",\n            encryption_spec_key_name=encryption,\n\
           \        )\n\n"
-        image: us-central1-docker.pkg.dev/prj-c-bu3artifacts-5wdo/c-publish-artifacts/vertexpipeline:v2
+        image: us-central1-docker.pkg.dev/prj-c-ml-artifacts-tqlj/c-publish-artifacts/vertexpipeline:v2
     exec-custom-eval-model:
       container:
         args:
@@ -923,7 +923,7 @@ deploymentSpec:
           \        dep_decision = \"true\"\n        keras_model.save(model_dir)\n\
           \    else:\n        dep_decision = \"false\"\n    return (dep_decision,)\n\
           \n"
-        image: us-central1-docker.pkg.dev/prj-c-bu3artifacts-5wdo/c-publish-artifacts/vertexpipeline:v2
+        image: us-central1-docker.pkg.dev/prj-c-ml-artifacts-tqlj/c-publish-artifacts/vertexpipeline:v2
     exec-custom-train-model:
       container:
         args:
@@ -1072,7 +1072,7 @@ deploymentSpec:
           \        )\n        return model_deploy.resource_name\n\n    vertex_endpoint.uri\
           \ = deploy_to_endpoint(vertex_model, endpoint)\n    vertex_endpoint.metadata['resourceName']=endpoint.resource_name\n\
           \n"
-        image: us-central1-docker.pkg.dev/prj-c-bu3artifacts-5wdo/c-publish-artifacts/vertexpipeline:v2
+        image: us-central1-docker.pkg.dev/prj-c-ml-artifacts-tqlj/c-publish-artifacts/vertexpipeline:v2
     exec-wait-gcp-resources:
       container:
         args:
