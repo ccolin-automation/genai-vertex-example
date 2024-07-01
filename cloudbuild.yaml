@@ -43,5 +43,6 @@ steps:
   #   args: ['cp', './composer/dags/dag.py', 'gs://us-central1-d-isolated-comp-8f58e4b5-bucket/dags/']
   #   id: 'upload dag'
 
+serviceAccount: 'projects/prj-n-ml-machine-learning-n5wy/serviceAccounts/trigger-sa'
 options:
   logging: CLOUD_LOGGING_ONLY
